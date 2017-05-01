@@ -15,16 +15,16 @@ xmlns="http://www.w3.org/TR/REC-html40">
  <o:DocumentProperties>
   <o:Author>Vincent Bechmann</o:Author>
   <o:LastAuthor>Vincent Bechmann</o:LastAuthor>
-  <o:Revision>5</o:Revision>
-  <o:TotalTime>93</o:TotalTime>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>89</o:TotalTime>
   <o:Created>2017-03-29T18:29:00Z</o:Created>
-  <o:LastSaved>2017-05-01T17:54:00Z</o:LastSaved>
+  <o:LastSaved>2017-05-01T17:50:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
-  <o:Words>191</o:Words>
-  <o:Characters>1092</o:Characters>
-  <o:Lines>9</o:Lines>
+  <o:Words>170</o:Words>
+  <o:Characters>971</o:Characters>
+  <o:Lines>8</o:Lines>
   <o:Paragraphs>2</o:Paragraphs>
-  <o:CharactersWithSpaces>1281</o:CharactersWithSpaces>
+  <o:CharactersWithSpaces>1139</o:CharactersWithSpaces>
   <o:Version>16.00</o:Version>
  </o:DocumentProperties>
  <o:OfficeDocumentSettings>
@@ -2046,6 +2046,7 @@ span.SpellE
 	font-size:10.0pt;
 	mso-ansi-font-size:10.0pt;
 	mso-bidi-font-size:10.0pt;
+	font-family:"Calibri",sans-serif;
 	mso-ascii-font-family:Calibri;
 	mso-ascii-theme-font:minor-latin;
 	mso-fareast-font-family:"Times New Roman";
@@ -2122,8 +2123,12 @@ table.a4
 
 <div class=WordSection1>
 
-<p class=MsoTitle align=center style='text-align:center'>Vincent’s Amazing
-Website Where He Stores All His Programs And Super Long Titles</p>
+<p class=MsoTitle align=center style='text-align:center'>Seriously now don't
+question my sanity</p>
+
+<p class=MsoNormal>please</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
 
 <p class=MsoNormal><span style='font-size:16.0pt;mso-bidi-font-size:11.0pt;
 line-height:105%;font-family:"Calibri Light",sans-serif;mso-ascii-theme-font:
@@ -2172,9 +2177,6 @@ Program</a> (see note under Counter)</p>
 line-height:105%;font-family:"Calibri Light",sans-serif;mso-ascii-theme-font:
 major-latin;mso-hansi-theme-font:major-latin;mso-bidi-theme-font:major-latin;
 color:#4472C4;mso-themecolor:accent1'>Game <span class=SpellE>o’Stuff</span><o:p></o:p></span></p>
-
-<p class=MsoQuote style='margin-left:0in'>This hasn’t been released in any way
-yet. Please help the development of this with forks and pull requests.</p>
 
 <p class=a><a href="https://github.com/vkb24312/GameoStuff">The Repo</a></p>
 
