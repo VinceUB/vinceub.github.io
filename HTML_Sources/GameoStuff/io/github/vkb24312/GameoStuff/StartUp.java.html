@@ -1,0 +1,216 @@
+<html>
+<head>
+<title>StartUp.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+.s3 { color: rgb(0,0,255); }
+.s4 { color: rgb(128,128,128); font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+StartUp.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<a name="l1"><span class="ln">1    </span></a><span class="s0">package </span><span class="s1">io.github.vkb24312.GameoStuff; 
+<a name="l2"><span class="ln">2    </span></a> 
+<a name="l3"><span class="ln">3    </span></a></span><span class="s0">import </span><span class="s1">org.json.simple.JSONObject; 
+<a name="l4"><span class="ln">4    </span></a> 
+<a name="l5"><span class="ln">5    </span></a></span><span class="s0">import </span><span class="s1">javax.swing.*; 
+<a name="l6"><span class="ln">6    </span></a></span><span class="s0">import </span><span class="s1">javax.swing.event.DocumentEvent; 
+<a name="l7"><span class="ln">7    </span></a></span><span class="s0">import </span><span class="s1">javax.swing.event.DocumentListener; 
+<a name="l8"><span class="ln">8    </span></a></span><span class="s0">import </span><span class="s1">java.awt.*; 
+<a name="l9"><span class="ln">9    </span></a></span><span class="s0">import </span><span class="s1">java.awt.event.ActionEvent; 
+<a name="l10"><span class="ln">10   </span></a></span><span class="s0">import </span><span class="s1">java.awt.event.ActionListener; 
+<a name="l11"><span class="ln">11   </span></a></span><span class="s0">import </span><span class="s1">java.io.File; 
+<a name="l12"><span class="ln">12   </span></a></span><span class="s0">import </span><span class="s1">java.io.FileNotFoundException; 
+<a name="l13"><span class="ln">13   </span></a></span><span class="s0">import </span><span class="s1">java.io.PrintWriter; 
+<a name="l14"><span class="ln">14   </span></a></span><span class="s0">import </span><span class="s1">java.util.Random; 
+<a name="l15"><span class="ln">15   </span></a> 
+<a name="l16"><span class="ln">16   </span></a></span><span class="s0">public class </span><span class="s1">StartUp{ 
+<a name="l17"><span class="ln">17   </span></a>    </span><span class="s0">public static void </span><span class="s1">login(){ 
+<a name="l18"><span class="ln">18   </span></a>        JFrame frame = </span><span class="s0">new </span><span class="s1">JFrame(</span><span class="s2">&quot;Game o'Stuff login/signup&quot;</span><span class="s1">); 
+<a name="l19"><span class="ln">19   </span></a>        <a href="JFrameCreator.java.html">JFrameCreator</a> jFrameCreator = </span><span class="s0">new <a href="JFrameCreator.java.html">JFrameCreator</a></span><span class="s1">(); 
+<a name="l20"><span class="ln">20   </span></a>        jFrameCreator.create(frame, </span><span class="s0">new </span><span class="s1">Dimension(</span><span class="s3">300</span><span class="s1">, </span><span class="s3">300</span><span class="s1">), </span><span class="s3">3</span><span class="s1">); 
+<a name="l21"><span class="ln">21   </span></a> 
+<a name="l22"><span class="ln">22   </span></a>        JPanel panel = </span><span class="s0">new </span><span class="s1">JPanel(</span><span class="s0">new </span><span class="s1">FlowLayout()); 
+<a name="l23"><span class="ln">23   </span></a>        JTextField username = </span><span class="s0">new </span><span class="s1">JTextField(); 
+<a name="l24"><span class="ln">24   </span></a>        JPasswordField password = </span><span class="s0">new </span><span class="s1">JPasswordField(); 
+<a name="l25"><span class="ln">25   </span></a>        JLabel warning = </span><span class="s0">new </span><span class="s1">JLabel(</span><span class="s2">&quot;The encryption of your Name and Password is very low, so dont use any secret information&quot;</span><span class="s1">); 
+<a name="l26"><span class="ln">26   </span></a>        panel.add(warning); 
+<a name="l27"><span class="ln">27   </span></a>        panel.add(username); 
+<a name="l28"><span class="ln">28   </span></a>        panel.add(password); 
+<a name="l29"><span class="ln">29   </span></a>        frame.add(panel); 
+<a name="l30"><span class="ln">30   </span></a>        username.setText(</span><span class="s2">&quot;Name&quot;</span><span class="s1">); 
+<a name="l31"><span class="ln">31   </span></a>        password.setText(</span><span class="s2">&quot;Password&quot;</span><span class="s1">); 
+<a name="l32"><span class="ln">32   </span></a>        password.setEchoChar((</span><span class="s0">char</span><span class="s1">)</span><span class="s3">0</span><span class="s1">); 
+<a name="l33"><span class="ln">33   </span></a>        frame.setSize(</span><span class="s3">300</span><span class="s1">, </span><span class="s3">150</span><span class="s1">); 
+<a name="l34"><span class="ln">34   </span></a> 
+<a name="l35"><span class="ln">35   </span></a>        password.getDocument().addDocumentListener(</span><span class="s0">new </span><span class="s1">DocumentListener() { 
+<a name="l36"><span class="ln">36   </span></a>            </span><span class="s0">public void </span><span class="s1">changedUpdate(DocumentEvent e) { 
+<a name="l37"><span class="ln">37   </span></a>                warn(); 
+<a name="l38"><span class="ln">38   </span></a>            } 
+<a name="l39"><span class="ln">39   </span></a>            </span><span class="s0">public void </span><span class="s1">removeUpdate(DocumentEvent e) { 
+<a name="l40"><span class="ln">40   </span></a>                warn(); 
+<a name="l41"><span class="ln">41   </span></a>            } 
+<a name="l42"><span class="ln">42   </span></a>            </span><span class="s0">public void </span><span class="s1">insertUpdate(DocumentEvent e) { 
+<a name="l43"><span class="ln">43   </span></a>                warn(); 
+<a name="l44"><span class="ln">44   </span></a>            } 
+<a name="l45"><span class="ln">45   </span></a> 
+<a name="l46"><span class="ln">46   </span></a>            </span><span class="s0">public void </span><span class="s1">warn() { 
+<a name="l47"><span class="ln">47   </span></a>                password.setEchoChar(</span><span class="s2">'*'</span><span class="s1">); 
+<a name="l48"><span class="ln">48   </span></a>            } 
+<a name="l49"><span class="ln">49   </span></a>        }); 
+<a name="l50"><span class="ln">50   </span></a> 
+<a name="l51"><span class="ln">51   </span></a>        JButton button = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s2">&quot;Log In/Sign Up&quot;</span><span class="s1">); 
+<a name="l52"><span class="ln">52   </span></a>        panel.add(button); 
+<a name="l53"><span class="ln">53   </span></a>        frame.setSize(</span><span class="s3">550</span><span class="s1">, </span><span class="s3">125</span><span class="s1">); 
+<a name="l54"><span class="ln">54   </span></a> 
+<a name="l55"><span class="ln">55   </span></a>        button.addActionListener(</span><span class="s0">new </span><span class="s1">ActionListener() { 
+<a name="l56"><span class="ln">56   </span></a>            </span><span class="s0">public void </span><span class="s1">actionPerformed(ActionEvent e) { 
+<a name="l57"><span class="ln">57   </span></a>                username.setVisible(</span><span class="s0">false</span><span class="s1">); 
+<a name="l58"><span class="ln">58   </span></a>                password.setVisible(</span><span class="s0">false</span><span class="s1">); 
+<a name="l59"><span class="ln">59   </span></a>                warning.setText(</span><span class="s2">&quot;Please wait...&quot;</span><span class="s1">); 
+<a name="l60"><span class="ln">60   </span></a>                button.setVisible(</span><span class="s0">false</span><span class="s1">); 
+<a name="l61"><span class="ln">61   </span></a>                frame.setSize(</span><span class="s3">100</span><span class="s1">, </span><span class="s3">75</span><span class="s1">); 
+<a name="l62"><span class="ln">62   </span></a> 
+<a name="l63"><span class="ln">63   </span></a>                File userDIR; 
+<a name="l64"><span class="ln">64   </span></a>                </span><span class="s0">if </span><span class="s1">(System.getProperty(</span><span class="s2">&quot;os.name&quot;</span><span class="s1">).startsWith(</span><span class="s2">&quot;Windows&quot;</span><span class="s1">)) { 
+<a name="l65"><span class="ln">65   </span></a>                    userDIR = </span><span class="s0">new </span><span class="s1">File(System.getenv(</span><span class="s2">&quot;APPDATA&quot;</span><span class="s1">) + </span><span class="s2">&quot;/Ultrabanana/Profiles/&quot; </span><span class="s1">+ username.getText() + </span><span class="s2">&quot;/&quot; </span><span class="s1">+ password.getText()); 
+<a name="l66"><span class="ln">66   </span></a>                } </span><span class="s0">else if </span><span class="s1">(System.getProperty(</span><span class="s2">&quot;os.name&quot;</span><span class="s1">).startsWith(</span><span class="s2">&quot;Mac&quot;</span><span class="s1">)) { 
+<a name="l67"><span class="ln">67   </span></a>                    userDIR = </span><span class="s0">new </span><span class="s1">File(</span><span class="s2">&quot;~/Library/Application Support/Ultrabanana/Profiles/&quot; </span><span class="s1">+ username.getText() + </span><span class="s2">&quot;/&quot; </span><span class="s1">+ password.getText() + </span><span class="s2">&quot;/&quot;</span><span class="s1">); 
+<a name="l68"><span class="ln">68   </span></a>                } </span><span class="s0">else if </span><span class="s1">(System.getProperty(</span><span class="s2">&quot;os.name&quot;</span><span class="s1">).startsWith(</span><span class="s2">&quot;Linux&quot;</span><span class="s1">)) { 
+<a name="l69"><span class="ln">69   </span></a>                    userDIR = </span><span class="s0">new </span><span class="s1">File(</span><span class="s2">&quot;~/Ultrabanana/Profiles/&quot; </span><span class="s1">+ username.getText() + </span><span class="s2">&quot;/&quot; </span><span class="s1">+ password.getText() + </span><span class="s2">&quot;/&quot;</span><span class="s1">); 
+<a name="l70"><span class="ln">70   </span></a>                } </span><span class="s0">else </span><span class="s1">{ 
+<a name="l71"><span class="ln">71   </span></a>                    warning.setText(System.getProperty(</span><span class="s2">&quot;os.name&quot;</span><span class="s1">) + </span><span class="s2">&quot; is not supported yet. Please wait for me to update the program to support your OS.&quot;</span><span class="s1">); 
+<a name="l72"><span class="ln">72   </span></a>                    frame.setSize(</span><span class="s3">1000</span><span class="s1">, </span><span class="s3">75</span><span class="s1">); 
+<a name="l73"><span class="ln">73   </span></a>                    userDIR = </span><span class="s0">new </span><span class="s1">File(</span><span class="s2">&quot;&quot;</span><span class="s1">); 
+<a name="l74"><span class="ln">74   </span></a>                    </span><span class="s0">while </span><span class="s1">(</span><span class="s0">true</span><span class="s1">) { 
+<a name="l75"><span class="ln">75   </span></a>                    } 
+<a name="l76"><span class="ln">76   </span></a>                } 
+<a name="l77"><span class="ln">77   </span></a>                </span><span class="s0">boolean </span><span class="s1">newUser; 
+<a name="l78"><span class="ln">78   </span></a>                newUser = userDIR.mkdirs(); 
+<a name="l79"><span class="ln">79   </span></a>                JSONObject json = </span><span class="s0">new </span><span class="s1">JSONObject(); 
+<a name="l80"><span class="ln">80   </span></a>                json.put(</span><span class="s2">&quot;username&quot;</span><span class="s1">, username.getText()); 
+<a name="l81"><span class="ln">81   </span></a>                json.put(</span><span class="s2">&quot;password&quot;</span><span class="s1">, password.getText()); 
+<a name="l82"><span class="ln">82   </span></a>                json.put(</span><span class="s2">&quot;userDIR&quot;</span><span class="s1">, userDIR.toString()); 
+<a name="l83"><span class="ln">83   </span></a>                json.put(</span><span class="s2">&quot;userJSON&quot;</span><span class="s1">, userDIR.toString() + </span><span class="s2">&quot;/userJSON.json&quot;</span><span class="s1">); 
+<a name="l84"><span class="ln">84   </span></a>                JButton ok = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s2">&quot;Continue&quot;</span><span class="s1">); 
+<a name="l85"><span class="ln">85   </span></a>                JButton cancel = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s2">&quot;Back&quot;</span><span class="s1">); 
+<a name="l86"><span class="ln">86   </span></a>                panel.add(cancel); 
+<a name="l87"><span class="ln">87   </span></a>                panel.add(ok); 
+<a name="l88"><span class="ln">88   </span></a>                </span><span class="s0">if </span><span class="s1">(newUser) { 
+<a name="l89"><span class="ln">89   </span></a>                    warning.setText(</span><span class="s2">&quot;This user doesnt exist&quot;</span><span class="s1">); 
+<a name="l90"><span class="ln">90   </span></a>                    ok.setVisible(</span><span class="s0">true</span><span class="s1">); 
+<a name="l91"><span class="ln">91   </span></a>                    cancel.setVisible(</span><span class="s0">true</span><span class="s1">); 
+<a name="l92"><span class="ln">92   </span></a>                } </span><span class="s0">else </span><span class="s1">{ 
+<a name="l93"><span class="ln">93   </span></a>                    warning.setText(</span><span class="s2">&quot;This user exists&quot;</span><span class="s1">); 
+<a name="l94"><span class="ln">94   </span></a>                    ok.setVisible(</span><span class="s0">true</span><span class="s1">); 
+<a name="l95"><span class="ln">95   </span></a>                    cancel.setVisible(</span><span class="s0">true</span><span class="s1">); 
+<a name="l96"><span class="ln">96   </span></a>                } 
+<a name="l97"><span class="ln">97   </span></a>                frame.setSize(</span><span class="s3">175</span><span class="s1">, </span><span class="s3">110</span><span class="s1">); 
+<a name="l98"><span class="ln">98   </span></a> 
+<a name="l99"><span class="ln">99   </span></a>                ok.addActionListener(</span><span class="s0">new </span><span class="s1">ActionListener() { 
+<a name="l100"><span class="ln">100  </span></a>                    @Override 
+<a name="l101"><span class="ln">101  </span></a>                    </span><span class="s0">public void </span><span class="s1">actionPerformed(ActionEvent e) { 
+<a name="l102"><span class="ln">102  </span></a>                        </span><span class="s0">if </span><span class="s1">(newUser) { 
+<a name="l103"><span class="ln">103  </span></a>                            signup(json); 
+<a name="l104"><span class="ln">104  </span></a>                            frame.dispose(); 
+<a name="l105"><span class="ln">105  </span></a>                        } </span><span class="s0">else </span><span class="s1">{ 
+<a name="l106"><span class="ln">106  </span></a> 
+<a name="l107"><span class="ln">107  </span></a>                            <a href="Main.java.html">Main</a>.login(json.get(</span><span class="s2">&quot;userJSON&quot;</span><span class="s1">)); 
+<a name="l108"><span class="ln">108  </span></a>                        } 
+<a name="l109"><span class="ln">109  </span></a>                    } 
+<a name="l110"><span class="ln">110  </span></a>                }); 
+<a name="l111"><span class="ln">111  </span></a> 
+<a name="l112"><span class="ln">112  </span></a>                cancel.addActionListener(</span><span class="s0">new </span><span class="s1">ActionListener() { 
+<a name="l113"><span class="ln">113  </span></a>                    @Override 
+<a name="l114"><span class="ln">114  </span></a>                    </span><span class="s0">public void </span><span class="s1">actionPerformed(ActionEvent e) { 
+<a name="l115"><span class="ln">115  </span></a>                        frame.dispose(); 
+<a name="l116"><span class="ln">116  </span></a>                        StartUp.login(); 
+<a name="l117"><span class="ln">117  </span></a>                        </span><span class="s0">if </span><span class="s1">(newUser) { 
+<a name="l118"><span class="ln">118  </span></a>                            File foo = </span><span class="s0">new </span><span class="s1">File(userDIR.getParent()); 
+<a name="l119"><span class="ln">119  </span></a>                            userDIR.delete(); 
+<a name="l120"><span class="ln">120  </span></a>                            </span><span class="s0">if </span><span class="s1">(foo.list().length &gt; </span><span class="s3">0</span><span class="s1">) { 
+<a name="l121"><span class="ln">121  </span></a>                            } </span><span class="s0">else </span><span class="s1">{ 
+<a name="l122"><span class="ln">122  </span></a>                                foo.delete(); 
+<a name="l123"><span class="ln">123  </span></a>                            } 
+<a name="l124"><span class="ln">124  </span></a>                        } 
+<a name="l125"><span class="ln">125  </span></a>                    } 
+<a name="l126"><span class="ln">126  </span></a>                }); 
+<a name="l127"><span class="ln">127  </span></a>            } 
+<a name="l128"><span class="ln">128  </span></a>        }); 
+<a name="l129"><span class="ln">129  </span></a>    } 
+<a name="l130"><span class="ln">130  </span></a> 
+<a name="l131"><span class="ln">131  </span></a>    </span><span class="s0">public static void </span><span class="s1">signup(JSONObject json){ 
+<a name="l132"><span class="ln">132  </span></a>        Random random = </span><span class="s0">new </span><span class="s1">Random(); 
+<a name="l133"><span class="ln">133  </span></a>        <a href="JFrameCreator.java.html">JFrameCreator</a> jFrameCreator = </span><span class="s0">new <a href="JFrameCreator.java.html">JFrameCreator</a></span><span class="s1">(); 
+<a name="l134"><span class="ln">134  </span></a>        <a href="DefaultStuff.java.html">DefaultStuff</a> values = </span><span class="s0">new <a href="DefaultStuff.java.html">DefaultStuff</a></span><span class="s1">(); 
+<a name="l135"><span class="ln">135  </span></a>        JFrame frame = </span><span class="s0">new </span><span class="s1">JFrame(); 
+<a name="l136"><span class="ln">136  </span></a> 
+<a name="l137"><span class="ln">137  </span></a>        jFrameCreator.create(frame, values.defaultDimension, </span><span class="s3">3</span><span class="s1">); 
+<a name="l138"><span class="ln">138  </span></a> 
+<a name="l139"><span class="ln">139  </span></a>        JTextField Name = </span><span class="s0">new </span><span class="s1">JTextField(<a href="DefaultStuff.java.html">DefaultStuff</a>.firstCapital(json.get(</span><span class="s2">&quot;username&quot;</span><span class="s1">).toString())); 
+<a name="l140"><span class="ln">140  </span></a>        JLabel Namel = </span><span class="s0">new </span><span class="s1">JLabel(</span><span class="s2">&quot;Your first name&quot;</span><span class="s1">); 
+<a name="l141"><span class="ln">141  </span></a> 
+<a name="l142"><span class="ln">142  </span></a>        String defaultSurname = <a href="DefaultStuff.java.html">DefaultStuff</a>.firstCapital(<a href="DefaultStuff.java.html">DefaultStuff</a>.surnames[random.nextInt(</span><span class="s3">1000</span><span class="s1">)]); 
+<a name="l143"><span class="ln">143  </span></a>        JTextField Surname = </span><span class="s0">new </span><span class="s1">JTextField(defaultSurname); 
+<a name="l144"><span class="ln">144  </span></a>        JLabel Surnamel = </span><span class="s0">new </span><span class="s1">JLabel(</span><span class="s2">&quot;Your Surname&quot;</span><span class="s1">); 
+<a name="l145"><span class="ln">145  </span></a> 
+<a name="l146"><span class="ln">146  </span></a>        String[] availableGenders = {</span><span class="s2">&quot;Male&quot;</span><span class="s1">, </span><span class="s2">&quot;Female&quot;</span><span class="s1">, </span><span class="s2">&quot;Helicopter&quot;</span><span class="s1">, </span><span class="s2">&quot;Other/Unspecified&quot;</span><span class="s1">}; 
+<a name="l147"><span class="ln">147  </span></a>        JComboBox Gender = </span><span class="s0">new </span><span class="s1">JComboBox(availableGenders); 
+<a name="l148"><span class="ln">148  </span></a>        JLabel Genderl = </span><span class="s0">new </span><span class="s1">JLabel(</span><span class="s2">&quot;Your gender&quot;</span><span class="s1">); 
+<a name="l149"><span class="ln">149  </span></a> 
+<a name="l150"><span class="ln">150  </span></a>        JButton button = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s2">&quot;Start Game&quot;</span><span class="s1">); 
+<a name="l151"><span class="ln">151  </span></a> 
+<a name="l152"><span class="ln">152  </span></a>        JPanel panel = </span><span class="s0">new </span><span class="s1">JPanel(</span><span class="s0">new </span><span class="s1">FlowLayout()); 
+<a name="l153"><span class="ln">153  </span></a> 
+<a name="l154"><span class="ln">154  </span></a>        panel.add(Namel); 
+<a name="l155"><span class="ln">155  </span></a>        panel.add(Name); 
+<a name="l156"><span class="ln">156  </span></a>        panel.add(Surnamel); 
+<a name="l157"><span class="ln">157  </span></a>        panel.add(Surname); 
+<a name="l158"><span class="ln">158  </span></a>        panel.add(Genderl); 
+<a name="l159"><span class="ln">159  </span></a>        panel.add(Gender); 
+<a name="l160"><span class="ln">160  </span></a>        panel.add(button); 
+<a name="l161"><span class="ln">161  </span></a> 
+<a name="l162"><span class="ln">162  </span></a>        frame.add(panel); 
+<a name="l163"><span class="ln">163  </span></a>        frame.setSize(</span><span class="s3">175</span><span class="s1">, </span><span class="s3">300</span><span class="s1">); 
+<a name="l164"><span class="ln">164  </span></a> 
+<a name="l165"><span class="ln">165  </span></a>        button.addActionListener(</span><span class="s0">new </span><span class="s1">ActionListener() { 
+<a name="l166"><span class="ln">166  </span></a>            @Override 
+<a name="l167"><span class="ln">167  </span></a>            </span><span class="s0">public void </span><span class="s1">actionPerformed(ActionEvent e) { 
+<a name="l168"><span class="ln">168  </span></a>                json.put(</span><span class="s2">&quot;Name&quot;</span><span class="s1">, Name.getText()); 
+<a name="l169"><span class="ln">169  </span></a>                json.put(</span><span class="s2">&quot;Surname&quot;</span><span class="s1">, Surname.getText()); 
+<a name="l170"><span class="ln">170  </span></a>                json.put(</span><span class="s2">&quot;Gender&quot;</span><span class="s1">, Gender.getSelectedItem().equals(</span><span class="s2">&quot;Helicopter&quot;</span><span class="s1">) ? </span><span class="s2">&quot;Other&quot; </span><span class="s1">: Gender.getSelectedItem().equals(</span><span class="s2">&quot;Other/Unspecified&quot;</span><span class="s1">) ? </span><span class="s2">&quot;Other&quot; </span><span class="s1">: Gender.getSelectedItem()); 
+<a name="l171"><span class="ln">171  </span></a>                json.put(</span><span class="s2">&quot;Money&quot;</span><span class="s1">, </span><span class="s0">new </span><span class="s1">Float(</span><span class="s3">100.00</span><span class="s1">)); 
+<a name="l172"><span class="ln">172  </span></a>                json.put(</span><span class="s2">&quot;InventorySpace&quot;</span><span class="s1">, </span><span class="s0">new </span><span class="s1">Integer(</span><span class="s3">64</span><span class="s1">)); 
+<a name="l173"><span class="ln">173  </span></a>                JSONObject inventory = </span><span class="s0">new </span><span class="s1">JSONObject(); 
+<a name="l174"><span class="ln">174  </span></a>                inventory.put(</span><span class="s3">1</span><span class="s1">, </span><span class="s2">&quot;OldSword&quot;</span><span class="s1">); 
+<a name="l175"><span class="ln">175  </span></a>                json.put(</span><span class="s2">&quot;Inventory&quot;</span><span class="s1">, inventory); 
+<a name="l176"><span class="ln">176  </span></a>                json.put(</span><span class="s2">&quot;userJSON&quot;</span><span class="s1">, System.getProperty(</span><span class="s2">&quot;os.name&quot;</span><span class="s1">).startsWith(</span><span class="s2">&quot;Windows&quot;</span><span class="s1">) ? json.get(</span><span class="s2">&quot;userDIR&quot;</span><span class="s1">).toString()+</span><span class="s2">&quot;</span><span class="s0">\\</span><span class="s2">userJSON.json&quot;</span><span class="s1">:json.get(</span><span class="s2">&quot;userDIR&quot;</span><span class="s1">).toString()+</span><span class="s2">&quot;/userJSON.json&quot;</span><span class="s1">); 
+<a name="l177"><span class="ln">177  </span></a> 
+<a name="l178"><span class="ln">178  </span></a>                System.out.println(json); 
+<a name="l179"><span class="ln">179  </span></a> 
+<a name="l180"><span class="ln">180  </span></a>                </span><span class="s0">try</span><span class="s1">{ 
+<a name="l181"><span class="ln">181  </span></a>                    PrintWriter writer = </span><span class="s0">new </span><span class="s1">PrintWriter(json.get(</span><span class="s2">&quot;userDIR&quot;</span><span class="s1">).toString()+</span><span class="s2">&quot;/userJSON.json&quot;</span><span class="s1">); 
+<a name="l182"><span class="ln">182  </span></a>                    writer.println(json); 
+<a name="l183"><span class="ln">183  </span></a>                    writer.close(); 
+<a name="l184"><span class="ln">184  </span></a>                } </span><span class="s0">catch </span><span class="s1">(FileNotFoundException F) { 
+<a name="l185"><span class="ln">185  </span></a>                    F.printStackTrace(); 
+<a name="l186"><span class="ln">186  </span></a>                } 
+<a name="l187"><span class="ln">187  </span></a> 
+<a name="l188"><span class="ln">188  </span></a>                <a href="Main.java.html">Main</a> main = </span><span class="s0">new <a href="Main.java.html">Main</a></span><span class="s1">(); 
+<a name="l189"><span class="ln">189  </span></a>                <a href="Game.java.html">Game</a>.main(json); 
+<a name="l190"><span class="ln">190  </span></a>            } 
+<a name="l191"><span class="ln">191  </span></a>        }); 
+<a name="l192"><span class="ln">192  </span></a>    } 
+<a name="l193"><span class="ln">193  </span></a>} 
+<a name="l194"><span class="ln">194  </span></a></span><span class="s4">//TEST</span></pre>
+</body>
+</html>
