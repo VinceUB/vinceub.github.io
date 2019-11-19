@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Vincent</title>
+    </head>
+    <body>
+        <p>Please enter your phone number (note: This doesn't actually do anything)</p>
+        <form>
+            <input type="range" min=0 max=99999999999 value="0" id="slider" step=1>
+            <p id="slidernum"></p>
+            <script>
+                var slider = document.getElementById("slider");
+                var sliderOutput = document.getElementById("slidernum");
+                
+                sliderOutput.innerHTML = "+" + slider.value;
+                
+                slider.oninput = function() {
+                    sliderOutput.innerHTML = "+" + this.value;
+                }
+            </script>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
