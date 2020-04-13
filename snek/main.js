@@ -136,6 +136,7 @@ function initGame(){
     apple = createApple(snek);
     
     document.addEventListener("keyup", (e)=>{
+        e.preventDefault();
         if     (e.code==="ArrowUp")    snek.direction = 0;
         else if(e.code==="ArrowRight") snek.direction = 1;
         else if(e.code==="ArrowDown")  snek.direction = 2;
@@ -145,10 +146,12 @@ function initGame(){
     var startx = 0;
     var starty = 0;
     document.addEventListener("touchstart", (e)=>{
+        e.preventDefault();
         startx = e.changedTouches[0].clientX;
         starty = e.changedTouches[0].clientY;
     });
     document.addEventListener("touchmove", (e)=>{
+        e.preventDefault();
         var dy = e.changedTouches[0].clientY-starty;
         var dx = e.changedTouches[0].cleintX-startx;
 
