@@ -141,7 +141,7 @@ function initGame(){
         else if(e.code==="ArrowRight") snek.direction = 1;
         else if(e.code==="ArrowDown")  snek.direction = 2;
         else if(e.code==="ArrowLeft")  snek.direction = 3;
-        e.stopPropagation
+        e.stopPropagation();
     });
 
     var startx = 0;
